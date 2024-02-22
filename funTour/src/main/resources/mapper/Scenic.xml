@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funtour.mapper.ScenicMapper">
+
+    <resultMap id="ScenicResultMap" type="com.funtour.entity.Scenic">
+        <id column="scenic_id" property="scenicId"/>
+        <result column="scenic_name" property="scenicName"/>
+        <result column="scenic_star" property="scenicStar"/>
+        <result column="scenic_province_id" property="scenicProvinceId"/>
+        <result column="scenic_city_id" property="scenicCityId"/>
+        <result column="scenic_content" property="scenicContent"/>
+        <result column="scenic_imgUrl" property="imgUrl"/>
+        <result column="scenic_type" property="scenicType"/>
+    </resultMap>
+
+    <select id="selectScenicById" resultMap="ScenicResultMap">
+        SELECT * FROM scenic WHERE scenic_id = #{id}
+    </select>
+</mapper>

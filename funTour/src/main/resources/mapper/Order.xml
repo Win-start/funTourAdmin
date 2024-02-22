@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funtour.mapper.OrderMapper">
+    <select id="findPage" resultType="com.funtour.entity.Order">
+        select orders.*, route.route_name
+        from orders orders
+        left join route route on orders.route_id = route.route_id
+        where 1=1
+        <if test="username != null and username != ''">
+            and user_name like concat('%', #{username}, '%')
+        </if>
+        <if test="phone != null and phone != ''">
+            and user_phone like concat('%', #{phone}, '%')
+        </if>
+        <if test="orderId != null">
+            and order_id = #{orderId}
+        </if>
+        order by order_id desc
+    </select>
+</mapper>

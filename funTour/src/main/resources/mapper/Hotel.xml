@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.funtour.mapper.HotelMapper">
+    <select id="selectByKeyword" resultType="com.funtour.entity.Hotel">
+        SELECT *
+        FROM hotel
+        WHERE hotel_province LIKE CONCAT('%', #{keyword}, '%')
+           OR hotel_city LIKE CONCAT('%', #{keyword}, '%')
+    </select>
+    <update id="updateHotelImg" parameterType="com.funtour.entity.Hotel">
+        UPDATE hotel SET hotel_img = #{hotelImg} WHERE hotel_id = #{hotelId}
+    </update>
+</mapper>
