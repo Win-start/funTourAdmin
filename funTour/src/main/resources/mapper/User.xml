@@ -12,7 +12,6 @@
     <update id="updateUser" parameterType="com.funtour.entity.User">
         UPDATE user
         SET username = #{username},
-            password = #{password},
             phone = #{phone},
             email = #{email},
             address = #{address},
